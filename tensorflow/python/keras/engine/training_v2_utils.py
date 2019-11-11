@@ -155,6 +155,7 @@ def _prepare_feed_values(model, inputs, mode):
   # the input layers, such that the data are fed into the input layers in the
   # correct order.
   if isinstance(inputs, dict):
+    targets = [inputs[key] for key in model._feed_output_names]
     inputs = [inputs[key] for key in model._feed_input_names]
   else:
     inputs = training_utils.ModelInputs(inputs).as_list()
